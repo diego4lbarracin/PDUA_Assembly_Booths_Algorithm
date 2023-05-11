@@ -1,4 +1,4 @@
-//Implementacion Algoritmo de Booth en Assembly.
+//Implementacion Algoritmo de Booth en Assembly.PDUA
 
 //Diego Alejandro Albarracin
 //David Felipe Vargas
@@ -98,7 +98,7 @@ mov acc, cte
 acum
 mov dptr, acc
 mov acc, [dptr]
-msb acc
+lsb acc
 mov a, acc
 //Se toma el valor lsb_a
 mov acc, cte
@@ -144,13 +144,13 @@ multiplacionBooth:
     //Movemos a acc el contenido de esa direccion de memoria
     mov acc, [DPTR]
     //Inicio de la comparacion: Se realiza la suma de la variable 'a' con q_1(en este caso acc) (a= -lsb_q )
-    //Si lsb_q=0 y q_1=0; entonces 0+0= 0
-    //Si lsb_q=1 y q_1=0; entonces -1+1= 0
+    //Si lsb_q=0 y q=0; entonces 0+0= 0
+    //Si lsb_q=1 y q_1=1; entonces -1+1= 0
     //Al conecer que cuando los valores lsb_q y q_1 son iguales no se ejecuta ninguna operacion y 
     //se salta inmediatamente a la funcion donde se realiza el corriemento
     add acc, a
-    jz
-   	lsr_q
+        jz
+        lsr_q
 
 
 
@@ -175,6 +175,7 @@ multiplacionBooth:
     jz
 	//llamar Fucnion de ir a la resta
 	rest_am
+    //Si no, se va a la suma
 	jmp cte
 	sum_am    
    
